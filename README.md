@@ -1,2 +1,2 @@
 # rubiks-cube
-rubiks cube solver
+## rubiks cube solver
