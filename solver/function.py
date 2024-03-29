@@ -10,7 +10,6 @@ Sign_Conv = {
             'red'    : 'R',
             'orange' : 'L',
             'yellow' : 'D'
-            
             }
 
 
