@@ -3,6 +3,7 @@ import numpy as np
 import kociemba
 
 
+
 Sign_Conv = {
             'green'  : 'F',
             'white'  : 'U',
@@ -10,6 +11,7 @@ Sign_Conv = {
             'red'    : 'R',
             'orange' : 'L',
             'yellow' : 'D'
+            
             }
 
 
@@ -144,20 +146,6 @@ def text_preview(frame,stickers):
             sym,x1,y1=text[name][0],text[name][1],text[name][2]
             cv2.putText(preview, sym, (x1,y1), font,1,(0, 0, 0), 1, cv2.LINE_AA) 
 
- 
-        
-'''def texton_preview_stickers2(frame,stickers):
-        cv2.putText(preview2,"ENTER : SOLVE", (50,100), font,1,(255,255,255), 1, cv2.LINE_AA)
-        cv2.putText(preview2,"1 : CHECKER (2 FACE)", (50,150), font,1,(255,255,255), 1, cv2.LINE_AA)
-        cv2.putText(preview2,"2 : CHECKER (6 FACE)", (50,200), font,1,(255,255,255), 1, cv2.LINE_AA)
-        cv2.putText(preview2,"3 : WIRE", (50,250), font,1,(255,255,255), 1, cv2.LINE_AA)
-        cv2.putText(preview2,"4 : CROSS", (50,300), font,1,(255,255,255), 1, cv2.LINE_AA)
-        cv2.putText(preview2,"5 : PLUS MINUS", (50,350), font,1,(255,255,255), 1, cv2.LINE_AA)
-        cv2.putText(preview2,"6 : 4 SPOTS", (50,400), font,1,(255,255,255), 1, cv2.LINE_AA)
-        cv2.putText(preview2,"7 : 6 SPOTS", (50,450), font,1,(255,255,255), 1, cv2.LINE_AA)
-        cv2.putText(preview2,"8 : 6 Ts", (50,500), font,1,(255,255,255), 1, cv2.LINE_AA)
-        cv2.putText(preview2,"9 : TETRIS", (50,550), font,1,(255,255,255), 1, cv2.LINE_AA)'''
-
 
 
 def fill_stickers(input_frame,stickers,sides):    
@@ -286,7 +274,7 @@ def process(operation):
     }    
     a=1
     for i in operation:
-        temp=cv2.imread("rubiks-solver-main\src\solver\moves.jpg",1)
+        temp=cv2.imread("moves.jpg",1)
         cv2.imshow('MOVES',temp)
         for j in range(len(replace[i])-1):
             replace[i][0](replace[i][j+1])
@@ -295,9 +283,6 @@ def process(operation):
         cv2.putText(preview,str(len(operation)), (500,620), font,1,(255,255,255), 1, cv2.LINE_AA)
         cv2.putText(preview,"CURRENT MOVE :", (400,50), font,1,(255,255,255), 1, cv2.LINE_AA)
         cv2.putText(preview, i, (550,50), font, 1 ,(255,255,255), 2, cv2.LINE_AA)
-        #fill_stickers(preview,stickers,State)
-        #solution.append(preview)
-        #cv2.imshow('Solution_2D',preview)
         cv2.putText(threeD,"CURRENT MOVE :", (100,40), font,1,(255,255,255), 1, cv2.LINE_AA)
         cv2.putText(threeD, i, (400,40), font, 1 ,(255,255,255), 2, cv2.LINE_AA)
         cv2.putText(threeD, "NUMBER OF MOVES : ", (100,450), font, 1 ,(255,255,255), 1, cv2.LINE_AA)
@@ -357,12 +342,10 @@ if __name__=='__main__':
     threeD = np.zeros((500,500,3), np.uint8)
 
     while True:
-        img1=cv2.imread("rubiks-solver-main\src\solver\yes.jpg",1)
+        img1=cv2.imread("yes.jpg",1)
         cv2.imshow('YES',img1)
-        img2=cv2.imread("rubiks-solver-main\src\solver\\no.jpg",1)
+        img2=cv2.imread("no.jpg",1)
         cv2.imshow('NO',img2)
-        img3=cv2.imread("rubiks-solver-main\src\solver\\filled.jpg",1)
-        cv2.imshow('FILLED',img3)
         q = cv2.waitKey(1) & 0xFF
         if(q==ord('y')):
             cv2.destroyWindow('YES')
@@ -393,64 +376,54 @@ if __name__=='__main__':
                     a+=1
                     current_state.append(color_name)
                 
-                count = 0
                 k = cv2.waitKey(5) & 0xFF
-                z = cv2.waitKey(5) & 0xFF
-                z = 1
                 if k == 27:
                     break
                 elif k ==ord('u'):
                     State['up']=current_state
                     State2['up2']=current_state
                     check_state.append('u')
-                    count+=1
                 elif k ==ord('r'):
                     check_state.append('r')
                     State['right']=current_state
                     State2['right2']=current_state
-                    count+=1 
                 elif k ==ord('l'):
                     check_state.append('l')
                     State['left']=current_state
-                    count+=1
                 elif k ==ord('d'):
                     check_state.append('d')
-                    State['down']=current_state
-                    count+=1       
+                    State['down']=current_state       
                 elif k ==ord('f'):
                     check_state.append('f')
                     State['front']=current_state 
-                    State2['front2']=current_state
-                    count+=1       
+                    State2['front2']=current_state       
                 elif k ==ord('b'):
                     check_state.append('b')
-                    State['back']=current_state
-                    count+=1       
-                elif k == ord('\r'):
+                    State['back']=current_state       
+                elif k == ord('\r') or k==ord('1') or k == ord('2') or k==ord('3') or k == ord('4') or k==ord('5') or k == ord('6') or k==ord('7') or k == ord('8') or k==ord('9'):
                     if len(set(check_state))==6:
                         try:
-                            if z == 0:
-                                solved=Solve(State,0)
-                            elif z == 1:
+                            if k == ord('\r'):
+                                solved=Solve(State,'\r')
+                            elif k == ord('1'):
                                 solved=Solve(State,1)  
-                            elif z == 2:
+                            elif k == ord('2'):
                                 solved=Solve(State,2)
-                            elif z == 3:
+                            elif k == ord('3'):
                                 solved=Solve(State,3)
-                            elif z == 4:
+                            elif k == ord('4'):
                                 solved=Solve(State,4)
-                            elif z == 5:
+                            elif k == ord('5'):
                                 solved=Solve(State,5)
-                            elif z == 6:
+                            elif k == ord('6'):
                                 solved=Solve(State,6)
-                            elif z == 7:
+                            elif k == ord('7'):
                                 solved=Solve(State,7)
-                            elif z == 8:
+                            elif k == ord('8'):
                                 solved=Solve(State,8)
-                            elif z == 9:
+                            elif k == ord('9'):
                                 solved=Solve(State,9)
                             if solved:
-                                    cv2.destroyWindow('FILLED')
                                     cv2.destroyWindow('Input Frame')
                                     cv2.destroyWindow('ThreeD')
                                     cv2.destroyWindow('Solve')
@@ -463,7 +436,7 @@ if __name__=='__main__':
                     else:
                         print("All side are not scanned check other window for finding which left to be scanned?")
                         print("Left to scan:",6-len(set(check_state)))
-                img=cv2.imread("rubiks-solver-main\src\solver\solve.jpg",1)
+                img=cv2.imread("solve.jpg",1)
                 cv2.imshow('Solve',img)
                 cv2.imshow('Preview',preview)
                 cv2.imshow('ThreeD',threeD)
