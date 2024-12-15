@@ -27,6 +27,14 @@ This project is a Rubik's Cube solver that takes input from a camera, detects th
 
 - Kociemba
 
+## Demo Images
+
+![Screenshot 2024-12-15 233724](https://github.com/user-attachments/assets/78592a6e-2461-49e0-a834-c3fcebbf77fb)
+![Screenshot 2024-12-15 233750](https://github.com/user-attachments/assets/60623ce3-3095-4c50-8330-5fc511f22f0e)
+
+## Demo Video
+
+https://github.com/user-attachments/assets/5786f3c6-e719-45cb-882e-e0b948979a20
 
 ## Installation
 
