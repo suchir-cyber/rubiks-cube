@@ -65,7 +65,7 @@ pip install opencv-python numpy kociemba
 
   ```bash
 
-    python cube.py
+    python function.py
 
   ```
 
