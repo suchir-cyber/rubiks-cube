@@ -1,4 +1,80 @@
-# rubiks-cube
-## rubiks cube solver
-![moves](https://github.com/suchir-cyber/rubiks-cube/assets/97435643/3d3e0290-1a07-4b83-823f-c8ad37b0972f)
+# Rubik's Cube Solver
 
+
+## Overview
+
+This project is a Rubik's Cube solver that takes input from a camera, detects the colors of the cube's stickers, and provides a solution using the Kociemba algorithm. The application uses OpenCV for image processing and NumPy for numerical operations.
+
+
+## Key Features
+
+- Real-time color detection of Rubik's Cube stickers.
+
+- Visualization of the cube's state in 2D and 3D.
+
+- Step-by-step solution display.
+
+- User-friendly interface for input and output.
+
+
+## Technologies Used
+
+- Python 3.x
+
+- OpenCV
+
+- NumPy
+
+- Kociemba
+
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+
+   git clone https://github.com/suchir_18/rubiks-cube-solver.git
+
+   cd rubiks-cube-solver
+
+   ```
+
+2.Install the required packages:
+
+```bash
+
+pip install opencv-python numpy kociemba
+
+```
+
+## Usage
+
+  1. Connect your webcam.
+
+  2. Run the application:
+
+  ```bash
+
+    python cube.py
+
+  ```
+
+  3. Follow the on-screen instructions to scan each face of the Rubik's Cube:
+      - Press u for the upper face.
+      - Press d for the down face.
+      - Press l for the left face.
+      - Press r for the right face.
+      - Press f for the front face.
+      - Press b for the back face.
+
+   4. Once all six faces are scanned, press Enter or a number key (1-9) to get the solution.
+
+   5. The solution will be displayed step-by-step, and you can visualize the moves in 3D.
+
+## Controls
+
+  - y: Start scanning the cube.
+  - n: Exit the application.
+  - Esc: Exit the current scanning mode.
+  - Enter or 1-9: Get the solution based on the selected method.
